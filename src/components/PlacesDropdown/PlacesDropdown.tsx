@@ -5,7 +5,7 @@ import { Place } from '../../types';
 import { useDropdownStyles } from '../../common/styles/dropDownStyles';
 
 interface PlacesDropdownProps {
-  places: Place[];
+  places?: Place[];
   selectedPlaceId?: string;
   onSelectPlace: (placeId: string) => void;
 }
@@ -16,6 +16,7 @@ const PlacesDropdown: React.FC<PlacesDropdownProps> = ({
   onSelectPlace,
 }) => {
   const classes = useDropdownStyles();
+
   return (
     <Select
       className={classes.select}
@@ -24,7 +25,7 @@ const PlacesDropdown: React.FC<PlacesDropdownProps> = ({
         onSelectPlace(event.target.value as string)
       }
     >
-      {places?.map((place: Place) => (
+      {places?.map((place: Place, index) => (
         <MenuItem key={place.place_code} value={place.place_code}>
           {place.description}
         </MenuItem>

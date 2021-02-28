@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import RoutesDropdown from '../RoutesDropdown/RoutesDropdown';
-import { Direction, Place, NexTripResult, Route, RouteParams } from '../../types';
+import { RouteParams } from '../../types';
 import { NexTripApi } from '../../api/nex-trip-api';
 import DirectionsDropdown from '../DirectionsDropdown/DirectionsDropdown';
 import PlacesDropdown from '../PlacesDropdown/PlacesDropdown';
@@ -13,6 +13,7 @@ import {
   useRouteMatch,
   matchPath,
 } from 'react-router-dom';
+import { searchByRouteReducer } from './searchByRouteReducer';
 
 const SearchByRoute: React.FC = () => {
   const { path, url } = useRouteMatch();
@@ -20,33 +21,38 @@ const SearchByRoute: React.FC = () => {
   const match = matchPath<RouteParams>(history.location.pathname, {
     path: '/route/:routeId/:directionId/:placeCode',
   });
-  const [routes, setRoutes] = useState<Route[]>([]);
-  const [selectedRouteId, setSelectedRouteId] = useState<string | undefined>();
-
-  const [directions, setDirections] = useState<Direction[]>([]);
-  const [selectedDirectionId, setSelectedDirectionId] = useState<number | undefined>();
-
-  const [places, setPlaces] = useState<Place[]>([]);
-  const [selectedPlaceId, setSelectedPlaceId] = useState<string | undefined>();
-
-  const clearState = () => {
-    setDirections([]);
-    setPlaces([]);
-    setSelectedPlaceId(undefined);
-    setSelectedDirectionId(undefined);
-  };
+  const [state, dispatch] = useReducer(searchByRouteReducer, {
+    directions: [],
+    places: [],
+    routes: [],
+    selectedPlaceId: '',
+    //Defaulting to -1 because some directionIds are 0, so in order to test for them in boolean statements I want to check that the value is greater than -1
+    selectedDirectionId: -1,
+    selectedRouteId: '',
+  });
 
   useEffect(() => {
     async function getRoutes() {
-      clearState();
+      if (match && match.params.routeId && match.params.directionId && match.params.placeCode) {
+        const result = await NexTripApi.getDirectionsAndPlaces(
+          match.params.routeId,
+          parseInt(match.params.directionId, 10)
+        );
+        dispatch({
+          type: 'SET_PLACES_AND_DIRECTIONS',
+          payload: {
+            places: result.places,
+            directions: result.directions,
+            selectedRouteId: match.params.routeId,
+            selectedDirectionId: parseInt(match.params.directionId, 10),
+            selectedPlaceId: match.params.placeCode,
+          },
+        });
+      } else {
+        dispatch({ type: 'CLEAR_STATE' });
+      }
       const routes = await NexTripApi.getRoutes();
-      setRoutes(routes);
-    }
-
-    if (match && match.params.routeId && match.params.directionId && match.params.placeCode) {
-      setSelectedRouteId(match.params.routeId);
-      setSelectedDirectionId(parseInt(match.params.directionId, 10));
-      setSelectedPlaceId(match.params.placeCode);
+      dispatch({ type: 'SET_ROUTES', payload: { routes } });
     }
 
     getRoutes();
@@ -54,36 +60,43 @@ const SearchByRoute: React.FC = () => {
 
   useEffect(() => {
     async function getDirections() {
-      clearState();
-      if (selectedRouteId) {
-        const directions = await NexTripApi.getDirectionsForRoute(selectedRouteId);
-        setDirections(directions);
+      if (state.selectedRouteId) {
+        const retrievedDirections = await NexTripApi.getDirectionsForRoute(state.selectedRouteId);
+        dispatch({ type: 'SET_DIRECTIONS', payload: { directions: retrievedDirections } });
       }
     }
     getDirections();
-  }, [selectedRouteId]);
+  }, [state.selectedRouteId]);
 
   useEffect(() => {
     async function getPlaces() {
-      if (selectedRouteId && selectedDirectionId) {
-        const places = await NexTripApi.getPlaces(selectedRouteId, selectedDirectionId);
-        setPlaces(places);
+      if (state.selectedRouteId && state.selectedDirectionId && state.selectedDirectionId > -1) {
+        const retrievedPlaces = await NexTripApi.getPlaces(
+          state.selectedRouteId,
+          state.selectedDirectionId
+        );
+        dispatch({ type: 'SET_PLACES', payload: { places: retrievedPlaces } });
       }
     }
     getPlaces();
-  }, [selectedRouteId, selectedDirectionId]);
+  }, [state.selectedRouteId, state.selectedDirectionId]);
 
   const onPlaceSelected = (placeId: string) => {
-    setSelectedPlaceId(placeId);
+    dispatch({ type: 'SET_SELECTED_PLACE', payload: { selectedPlaceId: placeId } });
     const getResults = async () => {
-      if (selectedRouteId && selectedDirectionId && selectedPlaceId) {
+      if (
+        state.selectedRouteId &&
+        state.selectedDirectionId &&
+        state.selectedDirectionId > -1 &&
+        placeId
+      ) {
         const nexTripResult = await NexTripApi.getNexTripResult(
-          selectedRouteId,
-          selectedDirectionId,
-          selectedPlaceId
+          state.selectedRouteId,
+          state.selectedDirectionId,
+          placeId
         );
         history.push({
-          pathname: `${url}/${selectedRouteId}/${selectedDirectionId}/${selectedPlaceId}`,
+          pathname: `${url}/${state.selectedRouteId}/${state.selectedDirectionId}/${placeId}`,
           state: { results: nexTripResult },
         });
       }
@@ -94,21 +107,29 @@ const SearchByRoute: React.FC = () => {
   return (
     <Grid container direction="column" justify="center" alignItems="center">
       <RoutesDropdown
-        routes={routes}
-        selectedRouteId={selectedRouteId}
-        onSelectRoute={(routeId: string) => setSelectedRouteId(routeId)}
+        routes={state.routes}
+        selectedRouteId={state.selectedRouteId}
+        onSelectRoute={(routeId: string) => {
+          dispatch({ type: 'SET_SELECTED_ROUTE', payload: { selectedRouteId: routeId } });
+          dispatch({ type: 'CLEAR_STATE' });
+        }}
       />
-      {selectedRouteId && (
+      {state.selectedRouteId && (
         <DirectionsDropdown
-          directions={directions}
-          selectedDirectionId={selectedDirectionId}
-          onSelectDirection={(directionId: number) => setSelectedDirectionId(directionId)}
+          directions={state.directions}
+          selectedDirectionId={state.selectedDirectionId}
+          onSelectDirection={(directionId: number) =>
+            dispatch({
+              type: 'SET_SELECTED_DIRECTION',
+              payload: { selectedDirectionId: directionId },
+            })
+          }
         />
       )}
-      {selectedDirectionId && selectedRouteId && (
+      {state.selectedDirectionId && state.selectedDirectionId > -1 && state.selectedRouteId && (
         <PlacesDropdown
-          places={places}
-          selectedPlaceId={selectedPlaceId}
+          places={state.places}
+          selectedPlaceId={state.selectedPlaceId}
           onSelectPlace={(placeId: string) => onPlaceSelected(placeId)}
         />
       )}

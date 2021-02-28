@@ -29,6 +29,16 @@ async function getVehiclesByRoute(routeId: string): Promise<Vehicle[]> {
   return baseFetch<Vehicle[]>(`${API_ROOT}/vehicles/${routeId}`);
 }
 
+async function getDirectionsAndPlaces(
+  routeId: string,
+  directionId: number
+): Promise<{ places: Place[]; directions: Direction[] }> {
+  const directions = await getDirectionsForRoute(routeId);
+  const places = await getPlaces(routeId, directionId);
+
+  return { places, directions };
+}
+
 async function baseFetch<T>(url: string, body?: any, extraHeaders = {}): Promise<T> {
   const fetchConfig: { body?: string; headers: Record<string, string> } = {
     headers: {
@@ -57,4 +67,5 @@ export const NexTripApi = {
   getPlaces,
   getNexTripResultByStopId,
   getVehiclesByRoute,
+  getDirectionsAndPlaces,
 };

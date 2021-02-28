@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import SearchByStop from '../SearchByStop';
 import { MemoryRouter } from 'react-router-dom';
 import { NexTripApi } from '../../../api/nex-trip-api';

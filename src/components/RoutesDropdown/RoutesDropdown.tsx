@@ -5,23 +5,27 @@ import { Route } from '../../types';
 import { useDropdownStyles } from '../../common/styles/dropDownStyles';
 
 interface RoutesDropdownProps {
-  routes: Route[];
+  routes?: Route[];
   selectedRouteId?: string;
   onSelectRoute: (routeId: string) => void;
 }
 
-const RoutesDropdown: React.FC<RoutesDropdownProps> = (props: RoutesDropdownProps) => {
+const RoutesDropdown: React.FC<RoutesDropdownProps> = ({
+  routes,
+  onSelectRoute,
+  selectedRouteId,
+}) => {
   const classes = useDropdownStyles();
 
   return (
     <Select
       className={classes.select}
-      value={props.selectedRouteId}
+      value={selectedRouteId}
       onChange={(event: React.ChangeEvent<{ value: unknown }>) =>
-        props.onSelectRoute(event.target.value as string)
+        onSelectRoute(event.target.value as string)
       }
     >
-      {props.routes?.map((route: Route) => (
+      {routes?.map((route: Route) => (
         <MenuItem key={route.route_id} value={route.route_id}>
           {route.route_label}
         </MenuItem>

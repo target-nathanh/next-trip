@@ -20,8 +20,10 @@ const SearchMethodPicker: React.FC = () => {
   }, [location]);
 
   const selectedMethodChanged = (method: string) => {
-    setSelectedMethod(method);
-    history.push(`/${method}`);
+    if (method !== selectedMethod) {
+      setSelectedMethod(method);
+      history.push(`/${method}`);
+    }
   };
   return (
     <div>

@@ -5,7 +5,7 @@ import { Direction } from '../../types';
 import { useDropdownStyles } from '../../common/styles/dropDownStyles';
 
 interface DirectionDropdownProps {
-  directions: Direction[];
+  directions?: Direction[];
   selectedDirectionId?: number;
   onSelectDirection: (directionId: number) => void;
 }

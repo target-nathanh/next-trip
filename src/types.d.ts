@@ -62,7 +62,7 @@ export interface Vehicle {
 }
 
 export interface RouteParams {
-  stopNumber?: string;
+  stopId?: string;
   routeId?: string;
   directionId?: string;
   placeCode?: string;
