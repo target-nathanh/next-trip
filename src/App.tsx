@@ -16,14 +16,14 @@ const useStyles = makeStyles({
     backgroundRepeat: 'no-repeat',
   },
   container: {
-    minHeight: '100vh',
+    height: '100vh',
   },
   nexTripApp: {
     minWidth: '50%',
     maxWidth: '100%',
     minHeight: '50vh',
     maxHeight: '70vh',
-    overflowY: 'scroll',
+    overflowY: 'auto',
   },
 });
 
