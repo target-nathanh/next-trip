@@ -70,7 +70,7 @@ const SearchByRoute: React.FC = () => {
 
   useEffect(() => {
     async function getPlaces() {
-      if (state.selectedRouteId && state.selectedDirectionId && state.selectedDirectionId > -1) {
+      if (state.selectedRouteId && state.selectedDirectionId > -1) {
         const retrievedPlaces = await NexTripApi.getPlaces(
           state.selectedRouteId,
           state.selectedDirectionId
@@ -85,8 +85,7 @@ const SearchByRoute: React.FC = () => {
     dispatch({ type: 'SET_SELECTED_PLACE', payload: { selectedPlaceId: placeId } });
     const getResults = async () => {
       if (
-        state.selectedRouteId &&
-        state.selectedDirectionId &&
+        state.selectedRouteId && 
         state.selectedDirectionId > -1 &&
         placeId
       ) {
@@ -112,21 +111,25 @@ const SearchByRoute: React.FC = () => {
         onSelectRoute={(routeId: string) => {
           dispatch({ type: 'SET_SELECTED_ROUTE', payload: { selectedRouteId: routeId } });
           dispatch({ type: 'CLEAR_STATE' });
+          history.replace("/route");
         }}
       />
       {state.selectedRouteId && (
         <DirectionsDropdown
           directions={state.directions}
           selectedDirectionId={state.selectedDirectionId}
-          onSelectDirection={(directionId: number) =>
+          onSelectDirection={(directionId: number) => {
+
             dispatch({
               type: 'SET_SELECTED_DIRECTION',
               payload: { selectedDirectionId: directionId },
             })
+            history.replace("/route");
+          }
           }
         />
       )}
-      {state.selectedDirectionId && state.selectedDirectionId > -1 && state.selectedRouteId && (
+      {state.selectedDirectionId > -1 && state.selectedRouteId && (
         <PlacesDropdown
           places={state.places}
           selectedPlaceId={state.selectedPlaceId}

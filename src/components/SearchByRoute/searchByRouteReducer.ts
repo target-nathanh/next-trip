@@ -4,8 +4,8 @@ interface SearchByRouteReducerState {
   directions?: Direction[];
   routes?: Route[];
   places?: Place[];
-  selectedRouteId?: string;
-  selectedDirectionId?: number;
+  selectedRouteId: string;
+  selectedDirectionId: number;
   selectedPlaceId?: string;
 }
 
