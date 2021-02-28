@@ -8,14 +8,21 @@ const useStyles = makeStyles({
   header: {
     display: 'flex',
     justifyContent: 'space-between',
+    backgroundColor: 'lightGray',
+    padding: '20px',
+    marginTop: '20px',
+    marginBottom: '10px',
+  },
+  headerText: {
+    fontWeight: 'bold',
   },
 });
 const ResultsHeader: React.FC<ResultsHeaderProps> = (props: ResultsHeaderProps) => {
-  const { header } = useStyles();
+  const { header, headerText } = useStyles();
   return (
     <Container className={header}>
-      <div>{props.stationName}</div>
-      <div>Stop#: {props.stopNumber}</div>
+      <div className={headerText}>{props.stationName}</div>
+      <div className={headerText}>Stop#: {props.stopNumber}</div>
     </Container>
   );
 };

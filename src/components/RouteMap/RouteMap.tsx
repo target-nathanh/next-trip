@@ -3,7 +3,7 @@ import { Map, Marker, Overlay } from 'pigeon-maps';
 import uniqBy from 'lodash/uniqBy';
 import { NexTripApi } from '../../api/nex-trip-api';
 import { Departure, Stop, Vehicle } from '../../types';
-import { makeStyles } from '@material-ui/core';
+import { Container, makeStyles } from '@material-ui/core';
 interface RouteMapProps {
   stop: Stop;
   departures: Departure[];
@@ -21,9 +21,14 @@ const useStyles = makeStyles({
     verticalAlign: 'middle',
     lineHeight: '30px',
   },
+  mapContainer: {
+    width: '300px',
+    height: '300px',
+    padding: '10px',
+  },
 });
 const RouteMap: React.FC<RouteMapProps> = ({ stop, departures }) => {
-  const { busMarker } = useStyles();
+  const { busMarker, mapContainer } = useStyles();
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   useEffect(() => {
     const getVehicles = async () => {
@@ -55,8 +60,8 @@ const RouteMap: React.FC<RouteMapProps> = ({ stop, departures }) => {
       }}
       defaultCenter={[stop.latitude, stop.longitude]}
       defaultZoom={12}
-      width={600}
-      height={400}
+      width={300}
+      height={300}
     >
       <Marker anchor={[stop.latitude, stop.longitude]} />
       {vehicles.length > 0 &&

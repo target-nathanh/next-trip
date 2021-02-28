@@ -1,49 +1,60 @@
-import React, { useState } from 'react';
-import './App.css';
+import React from 'react';
 import SearchMethodPicker from './components/SearchMethodPicker/SearchMethodPicker';
-import { SearchMode } from './common/constants';
-import ResultsHeader from './components/ResultsHeader/ResultsHeader';
-import SearchByStopInput from './components/SearchByStopInput/SearchByStopInput';
-import RouteMap from './components/RouteMap/RouteMap';
-import ResultsTable from './components/ResultsTable/ResultsTable';
-import SearchByRouteWizard from './components/SearchByRouteWizard/SearchByRouteWizard';
-import { NexTripResult } from './types';
-import { Container } from '@material-ui/core';
+import SearchByStop from './components/SearchByStop/SearchByStop';
+import SearchByRoute from './components/SearchByRoute/SearchByRoute';
+import busBackground from './common/images/busBackground.jpg';
+import { Grid, makeStyles, Paper } from '@material-ui/core';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+
+const useStyles = makeStyles({
+  base: {
+    textAlign: 'center',
+    backgroundImage: `url(${busBackground})`,
+    height: '100vh',
+    width: '100vw',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+  },
+  container: {
+    minHeight: '100vh',
+  },
+  nexTripApp: {
+    minWidth: '50%',
+    maxWidth: '100%',
+    minHeight: '50vh',
+    maxHeight: '70vh',
+    overflowY: 'scroll',
+  },
+});
 
 function App() {
-  const [selectedMethod, setSelectedMethod] = useState<string>(SearchMode.ROUTE);
-  const [results, setResults] = useState<NexTripResult | null>(null);
-
-  const selectedMethodChanged = (method: string) => {
-    setSelectedMethod(method);
-    setResults(null);
-  };
+  const classes = useStyles();
   return (
-    <Container maxWidth="md" className="App">
-      <SearchMethodPicker
-        searchMethod={selectedMethod}
-        onSelectMethod={(method) => selectedMethodChanged(method)}
-      />
-      {selectedMethod === SearchMode.ROUTE && (
-        <SearchByRouteWizard onResultsRetrieved={(results) => setResults(results)} />
-      )}
-      {selectedMethod === SearchMode.STOP && (
-        <SearchByStopInput onResultsRetrieved={(results) => setResults(results)} />
-      )}
+    <div className={classes.base}>
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justify="center"
+        className={classes.container}
+      >
+        <Paper elevation={3} className={classes.nexTripApp}>
+          <Router>
+            <SearchMethodPicker />
 
-      {results?.stops?.length && (
-        <>
-          <ResultsHeader
-            stopNumber={results.stops[0].stop_id}
-            stationName={results.stops[0].description}
-          />
-          <ResultsTable departures={results.departures} />
-          {results.departures && (
-            <RouteMap stop={results.stops[0]} departures={results.departures} />
-          )}
-        </>
-      )}
-    </Container>
+            <Switch>
+              <Route exact path="/">
+                <Redirect to="/route" />
+              </Route>
+
+              <Route path={'/route'} children={<SearchByRoute />} />
+              <Route path={'/stop'} children={<SearchByStop />} />
+            </Switch>
+          </Router>
+        </Paper>
+      </Grid>
+    </div>
   );
 }
 

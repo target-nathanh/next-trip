@@ -44,7 +44,7 @@ export interface Departure {
   schedule_relationship?: string;
 }
 export interface NexTripResult {
-  stops?: Stop[];
+  stops: Stop[];
   departures?: Departure[];
 }
 export interface Vehicle {
@@ -59,4 +59,11 @@ export interface Vehicle {
   bearing?: number;
   odometer?: number;
   speed?: number;
+}
+
+export interface RouteParams {
+  stopNumber?: string;
+  routeId?: string;
+  directionId?: string;
+  placeCode?: string;
 }

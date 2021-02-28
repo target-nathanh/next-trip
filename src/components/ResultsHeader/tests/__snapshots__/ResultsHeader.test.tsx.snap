@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultsHeader matches snapshot 1`] = `
+<div
+  class="MuiContainer-root makeStyles-header-1 MuiContainer-maxWidthLg"
+>
+  <div
+    class="makeStyles-headerText-2"
+  >
+    Starblaster Station
+  </div>
+  <div
+    class="makeStyles-headerText-2"
+  >
+    Stop#: 
+    16137
+  </div>
+</div>
+`;

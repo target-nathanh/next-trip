@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchByStop matches snapshot 1`] = `
+<div
+  class="MuiContainer-root makeStyles-inputContainer-2 MuiContainer-maxWidthLg"
+>
+  <div
+    aria-errormessage="The entered stop number is not valid"
+    class="MuiFormControl-root MuiTextField-root makeStyles-input-1"
+  >
+    <div
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+    >
+      <input
+        aria-invalid="false"
+        class="MuiInputBase-input MuiOutlinedInput-input"
+        placeholder="Enter stop number"
+        type="number"
+        value=""
+      />
+      <fieldset
+        aria-hidden="true"
+        class="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
+        style="padding-left: 8px;"
+      >
+        <legend
+          class="PrivateNotchedOutline-legend-4"
+          style="width: 0.01px;"
+        >
+          <span>
+            ​
+          </span>
+        </legend>
+      </fieldset>
+    </div>
+  </div>
+  <button
+    aria-label="search"
+    class="MuiButtonBase-root MuiIconButton-root"
+    data-testid="search-icon"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiIconButton-label"
+    >
+      <span
+        aria-hidden="true"
+        class="material-icons MuiIcon-root"
+      >
+        search
+      </span>
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;

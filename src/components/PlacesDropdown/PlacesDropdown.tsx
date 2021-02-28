@@ -1,25 +1,30 @@
 import React from 'react';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import find from 'lodash/find';
 import { Place } from '../../types';
+import { useDropdownStyles } from '../../common/styles/dropDownStyles';
 
 interface PlacesDropdownProps {
   places: Place[];
-  selectedPlace?: Place;
-  onSelectPlace: (place: Place) => void;
+  selectedPlaceId?: string;
+  onSelectPlace: (placeId: string) => void;
 }
 
-const PlacesDropdown: React.FC<PlacesDropdownProps> = (props: PlacesDropdownProps) => {
-  const onChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    const selectedPlace = find(props.places, { place_code: event.target.value }) as Place;
-    if (selectedPlace) {
-      props.onSelectPlace(selectedPlace);
-    }
-  };
+const PlacesDropdown: React.FC<PlacesDropdownProps> = ({
+  places,
+  selectedPlaceId,
+  onSelectPlace,
+}) => {
+  const classes = useDropdownStyles();
   return (
-    <Select value={props.selectedPlace?.place_code} onChange={onChange}>
-      {props.places?.map((place: Place) => (
+    <Select
+      className={classes.select}
+      value={selectedPlaceId}
+      onChange={(event: React.ChangeEvent<{ value: unknown }>) =>
+        onSelectPlace(event.target.value as string)
+      }
+    >
+      {places?.map((place: Place) => (
         <MenuItem key={place.place_code} value={place.place_code}>
           {place.description}
         </MenuItem>
