@@ -4,7 +4,7 @@ import ResultsTable from '../ResultsTable/ResultsTable';
 import RouteMap from '../RouteMap/RouteMap';
 import { useLocation, useParams } from 'react-router-dom';
 import { NexTripResult, RouteParams } from '../../types';
-import { NexTripApi } from '../../api/nex-trip-api';
+import { NexTripApi } from '../../api/nexTripApi';
 
 interface LocationState {
   results: NexTripResult;

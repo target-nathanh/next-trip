@@ -15,6 +15,7 @@ exports[`DirectionsDropdown matches snapshot 1`] = `
   <input
     aria-hidden="true"
     class="MuiSelect-nativeInput"
+    placeholder="Select direction"
     tabindex="-1"
     value="0"
   />

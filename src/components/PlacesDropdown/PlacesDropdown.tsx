@@ -21,6 +21,7 @@ const PlacesDropdown: React.FC<PlacesDropdownProps> = ({
     <Select
       className={classes.select}
       value={selectedPlaceId}
+      placeholder={'Select stop'}
       onChange={(event: React.ChangeEvent<{ value: unknown }>) =>
         onSelectPlace(event.target.value as string)
       }

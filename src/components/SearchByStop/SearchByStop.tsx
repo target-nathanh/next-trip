@@ -2,7 +2,7 @@ import TextField from '@material-ui/core/TextField';
 import Icon from '@material-ui/core/Icon';
 import React, { KeyboardEvent, useState } from 'react';
 import { Container, IconButton, makeStyles } from '@material-ui/core';
-import { NexTripApi } from '../../api/nex-trip-api';
+import { NexTripApi } from '../../api/nexTripApi';
 import { matchPath, Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
 import Results from '../Results/Results';
 import { RouteParams } from '../../types';

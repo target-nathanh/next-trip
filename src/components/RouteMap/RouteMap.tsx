@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Map, Marker, Overlay } from 'pigeon-maps';
 import uniqBy from 'lodash/uniqBy';
-import { NexTripApi } from '../../api/nex-trip-api';
+import { NexTripApi } from '../../api/nexTripApi';
 import { Departure, Stop, Vehicle } from '../../types';
 import { makeStyles } from '@material-ui/core';
 interface RouteMapProps {
@@ -35,10 +35,11 @@ const RouteMap: React.FC<RouteMapProps> = ({ stop, departures }) => {
       setVehicles([]);
       const uniqueRouteIds = uniqBy(departures, 'route_id').map((departure) => departure.route_id);
 
+      const retrievedVehicles: Vehicle[] = [];
       for (const routeId of uniqueRouteIds) {
-        const retrievedVehicles = await NexTripApi.getVehiclesByRoute(routeId);
-        setVehicles((vehicles) => vehicles.concat(retrievedVehicles));
+        retrievedVehicles.concat(await NexTripApi.getVehiclesByRoute(routeId));
       }
+      setVehicles(retrievedVehicles);
     };
 
     getVehicles();

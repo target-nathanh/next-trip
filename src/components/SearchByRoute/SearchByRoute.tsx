@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
 import RoutesDropdown from '../RoutesDropdown/RoutesDropdown';
 import { RouteParams } from '../../types';
-import { NexTripApi } from '../../api/nex-trip-api';
+import { NexTripApi } from '../../api/nexTripApi';
 import DirectionsDropdown from '../DirectionsDropdown/DirectionsDropdown';
 import PlacesDropdown from '../PlacesDropdown/PlacesDropdown';
 import { Grid } from '@material-ui/core';
@@ -32,7 +32,7 @@ const SearchByRoute: React.FC = () => {
   });
 
   useEffect(() => {
-    async function getRoutes() {
+    async function iniialLoad() {
       if (match && match.params.routeId && match.params.directionId && match.params.placeCode) {
         const result = await NexTripApi.getDirectionsAndPlaces(
           match.params.routeId,
@@ -55,7 +55,7 @@ const SearchByRoute: React.FC = () => {
       dispatch({ type: 'SET_ROUTES', payload: { routes } });
     }
 
-    getRoutes();
+    iniialLoad();
   }, []);
 
   useEffect(() => {
@@ -81,26 +81,19 @@ const SearchByRoute: React.FC = () => {
     getPlaces();
   }, [state.selectedRouteId, state.selectedDirectionId]);
 
-  const onPlaceSelected = (placeId: string) => {
+  const onPlaceSelected = async (placeId: string) => {
     dispatch({ type: 'SET_SELECTED_PLACE', payload: { selectedPlaceId: placeId } });
-    const getResults = async () => {
-      if (
-        state.selectedRouteId && 
-        state.selectedDirectionId > -1 &&
+    if (state.selectedRouteId && state.selectedDirectionId > -1 && placeId) {
+      const nexTripResult = await NexTripApi.getNexTripResult(
+        state.selectedRouteId,
+        state.selectedDirectionId,
         placeId
-      ) {
-        const nexTripResult = await NexTripApi.getNexTripResult(
-          state.selectedRouteId,
-          state.selectedDirectionId,
-          placeId
-        );
-        history.push({
-          pathname: `${url}/${state.selectedRouteId}/${state.selectedDirectionId}/${placeId}`,
-          state: { results: nexTripResult },
-        });
-      }
-    };
-    getResults();
+      );
+      history.push({
+        pathname: `${url}/${state.selectedRouteId}/${state.selectedDirectionId}/${placeId}`,
+        state: { results: nexTripResult },
+      });
+    }
   };
 
   return (
@@ -111,7 +104,7 @@ const SearchByRoute: React.FC = () => {
         onSelectRoute={(routeId: string) => {
           dispatch({ type: 'SET_SELECTED_ROUTE', payload: { selectedRouteId: routeId } });
           dispatch({ type: 'CLEAR_STATE' });
-          history.replace("/route");
+          history.replace('/route');
         }}
       />
       {state.selectedRouteId && (
@@ -119,14 +112,12 @@ const SearchByRoute: React.FC = () => {
           directions={state.directions}
           selectedDirectionId={state.selectedDirectionId}
           onSelectDirection={(directionId: number) => {
-
             dispatch({
               type: 'SET_SELECTED_DIRECTION',
               payload: { selectedDirectionId: directionId },
-            })
-            history.replace("/route");
-          }
-          }
+            });
+            history.replace('/route');
+          }}
         />
       )}
       {state.selectedDirectionId > -1 && state.selectedRouteId && (

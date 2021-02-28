@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import SearchByStop from '../SearchByStop';
 import { MemoryRouter } from 'react-router-dom';
-import { NexTripApi } from '../../../api/nex-trip-api';
+import { NexTripApi } from '../../../api/nexTripApi';
 
 describe('SearchByStop', () => {
   test('matches snapshot', () => {

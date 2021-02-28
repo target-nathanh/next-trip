@@ -21,6 +21,7 @@ const RoutesDropdown: React.FC<RoutesDropdownProps> = ({
     <Select
       className={classes.select}
       value={selectedRouteId}
+      placeholder={'Select route'}
       onChange={(event: React.ChangeEvent<{ value: unknown }>) =>
         onSelectRoute(event.target.value as string)
       }

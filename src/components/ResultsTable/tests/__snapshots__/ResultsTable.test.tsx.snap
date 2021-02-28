@@ -1,0 +1,398 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Results matches snapshot 1`] = `
+<div
+  class="MuiContainer-root MuiContainer-maxWidthLg"
+>
+  <div
+    class="MuiTableContainer-root makeStyles-table-5"
+  >
+    <table
+      class="MuiTable-root"
+    >
+      <thead
+        class="MuiTableHead-root"
+      >
+        <tr
+          class="MuiTableRow-root MuiTableRow-head"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-6 MuiTableCell-sizeSmall"
+            scope="col"
+          >
+            Route
+          </th>
+          <th
+            class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-6 MuiTableCell-sizeSmall"
+            scope="col"
+          >
+            Destination
+          </th>
+          <th
+            class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-6 MuiTableCell-sizeSmall"
+            scope="col"
+          >
+            Departs
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="MuiTableBody-root"
+      >
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            122
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            University AV/Circulator
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            5:54
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            2
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            Franklin Av / To Hennepin
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            14 Min
+            <span
+              aria-hidden="true"
+              aria-label="Live result"
+              class="material-icons MuiIcon-root makeStyles-signalIcon-2"
+              title="Live result"
+            >
+              wifi
+            </span>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            6
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            27Av-Univ / Via Xerxes
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            21 Min
+            <span
+              aria-hidden="true"
+              aria-label="Live result"
+              class="material-icons MuiIcon-root makeStyles-signalIcon-2"
+              title="Live result"
+            >
+              wifi
+            </span>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            122
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            University AV/Circulator
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            6:14
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            2
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            Franklin Av / To Hennepin
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            6:17
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            6
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            27Av-Univ / Via Xerxes
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            6:28
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            122
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            University AV/Circulator
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            6:34
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            2
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            Franklin Av / To Hennepin
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            6:37
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            122
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            University AV/Circulator
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            6:54
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            2
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            Franklin Av / To Hennepin
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            6:57
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            6
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            27Av-Univ / Via France
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            7:08
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            122
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            University AV/Circulator
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            7:14
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            2
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            Franklin Av / To Hennepin
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            7:17
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            2
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            Franklin Av / To Hennepin
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            7:28
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            122
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            University AV/Circulator
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            7:34
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+            role="cell"
+            scope="row"
+          >
+            6
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall"
+          >
+            27Av-Univ / Via Wooddale
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-departureTextCell-3 MuiTableCell-sizeSmall"
+          >
+            7:38
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

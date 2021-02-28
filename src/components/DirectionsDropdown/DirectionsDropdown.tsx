@@ -19,13 +19,14 @@ const DirectionsDropdown: React.FC<DirectionDropdownProps> = ({
   return (
     <Select
       className={classes.select}
-      value={selectedDirectionId}
+      value={selectedDirectionId?.toString()}
+      placeholder={'Select direction'}
       onChange={(event: React.ChangeEvent<{ value: unknown }>) =>
-        onSelectDirection(event.target.value as number)
+        onSelectDirection(parseInt(event.target.value as string, 10))
       }
     >
       {directions?.map((direction: Direction) => (
-        <MenuItem key={direction.direction_id} value={direction.direction_id}>
+        <MenuItem key={direction.direction_id} value={direction.direction_id.toString()}>
           {direction.direction_name}
         </MenuItem>
       ))}
