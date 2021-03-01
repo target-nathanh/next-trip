@@ -50,6 +50,13 @@ function App() {
 
               <Route path={'/route'} children={<SearchByRoute />} />
               <Route path={'/stop'} children={<SearchByStop />} />
+              <Route path="*">
+                <>
+                  <h3>
+                    You have entered an invalid url. Please click an option above to get started!
+                  </h3>
+                </>
+              </Route>
             </Switch>
           </Router>
         </Paper>

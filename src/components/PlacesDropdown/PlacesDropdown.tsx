@@ -3,6 +3,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { Place } from '../../types';
 import { useDropdownStyles } from '../../common/styles/dropDownStyles';
+import { FormControl, InputLabel } from '@material-ui/core';
 
 interface PlacesDropdownProps {
   places?: Place[];
@@ -18,20 +19,23 @@ const PlacesDropdown: React.FC<PlacesDropdownProps> = ({
   const classes = useDropdownStyles();
 
   return (
-    <Select
-      className={classes.select}
-      value={selectedPlaceId}
-      placeholder={'Select stop'}
-      onChange={(event: React.ChangeEvent<{ value: unknown }>) =>
-        onSelectPlace(event.target.value as string)
-      }
-    >
-      {places?.map((place: Place, index) => (
-        <MenuItem key={place.place_code} value={place.place_code}>
-          {place.description}
-        </MenuItem>
-      ))}
-    </Select>
+    <FormControl>
+      <InputLabel id="route-select-label">Route</InputLabel>
+      <Select
+        className={classes.select}
+        labelId="route-select-label"
+        value={selectedPlaceId}
+        onChange={(event: React.ChangeEvent<{ value: unknown }>) =>
+          onSelectPlace(event.target.value as string)
+        }
+      >
+        {places?.map((place: Place, index) => (
+          <MenuItem key={place.place_code} value={place.place_code}>
+            {place.description}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 };
 

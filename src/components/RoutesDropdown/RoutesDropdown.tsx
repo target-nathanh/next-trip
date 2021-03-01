@@ -3,6 +3,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { Route } from '../../types';
 import { useDropdownStyles } from '../../common/styles/dropDownStyles';
+import { FormControl, InputLabel } from '@material-ui/core';
 
 interface RoutesDropdownProps {
   routes?: Route[];
@@ -18,20 +19,23 @@ const RoutesDropdown: React.FC<RoutesDropdownProps> = ({
   const classes = useDropdownStyles();
 
   return (
-    <Select
-      className={classes.select}
-      value={selectedRouteId}
-      placeholder={'Select route'}
-      onChange={(event: React.ChangeEvent<{ value: unknown }>) =>
-        onSelectRoute(event.target.value as string)
-      }
-    >
-      {routes?.map((route: Route) => (
-        <MenuItem key={route.route_id} value={route.route_id}>
-          {route.route_label}
-        </MenuItem>
-      ))}
-    </Select>
+    <FormControl>
+      <InputLabel id="route-select-label">Route</InputLabel>
+      <Select
+        className={classes.select}
+        labelId="route-select-label"
+        value={selectedRouteId}
+        onChange={(event: React.ChangeEvent<{ value: unknown }>) =>
+          onSelectRoute(event.target.value as string)
+        }
+      >
+        {routes?.map((route: Route) => (
+          <MenuItem key={route.route_id} value={route.route_id}>
+            {route.route_label}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 };
 

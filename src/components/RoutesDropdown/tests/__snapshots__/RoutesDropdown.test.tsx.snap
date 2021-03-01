@@ -2,32 +2,43 @@
 
 exports[`RoutesDropdown matches snapshot 1`] = `
 <div
-  class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-select-1"
+  class="MuiFormControl-root"
 >
+  <label
+    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+    data-shrink="true"
+    id="route-select-label"
+  >
+    Route
+  </label>
   <div
-    aria-haspopup="listbox"
-    class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-    role="button"
-    tabindex="0"
+    class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-select-1 MuiInputBase-formControl MuiInput-formControl"
   >
-    METRO Blue Line
-  </div>
-  <input
-    aria-hidden="true"
-    class="MuiSelect-nativeInput"
-    placeholder="Select route"
-    tabindex="-1"
-    value="901"
-  />
-  <svg
-    aria-hidden="true"
-    class="MuiSvgIcon-root MuiSelect-icon"
-    focusable="false"
-    viewBox="0 0 24 24"
-  >
-    <path
-      d="M7 10l5 5 5-5z"
+    <div
+      aria-haspopup="listbox"
+      aria-labelledby="route-select-label"
+      class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+      role="button"
+      tabindex="0"
+    >
+      METRO Blue Line
+    </div>
+    <input
+      aria-hidden="true"
+      class="MuiSelect-nativeInput"
+      tabindex="-1"
+      value="901"
     />
-  </svg>
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSelect-icon"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M7 10l5 5 5-5z"
+      />
+    </svg>
+  </div>
 </div>
 `;

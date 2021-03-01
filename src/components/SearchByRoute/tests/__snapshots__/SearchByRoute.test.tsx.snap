@@ -5,35 +5,46 @@ exports[`SearchByRoute matches snapshot for default state 1`] = `
   class="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column MuiGrid-align-items-xs-center MuiGrid-justify-xs-center"
 >
   <div
-    class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-select-1"
+    class="MuiFormControl-root"
   >
+    <label
+      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+      data-shrink="false"
+      id="route-select-label"
+    >
+      Route
+    </label>
     <div
-      aria-haspopup="listbox"
-      class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-      role="button"
-      tabindex="0"
+      class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-select-1 MuiInputBase-formControl MuiInput-formControl"
     >
-      <span>
-        ​
-      </span>
-    </div>
-    <input
-      aria-hidden="true"
-      class="MuiSelect-nativeInput"
-      placeholder="Select route"
-      tabindex="-1"
-      value=""
-    />
-    <svg
-      aria-hidden="true"
-      class="MuiSvgIcon-root MuiSelect-icon"
-      focusable="false"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M7 10l5 5 5-5z"
+      <div
+        aria-haspopup="listbox"
+        aria-labelledby="route-select-label"
+        class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+        role="button"
+        tabindex="0"
+      >
+        <span>
+          ​
+        </span>
+      </div>
+      <input
+        aria-hidden="true"
+        class="MuiSelect-nativeInput"
+        tabindex="-1"
+        value=""
       />
-    </svg>
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSelect-icon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+      </svg>
+    </div>
   </div>
   
 </div>

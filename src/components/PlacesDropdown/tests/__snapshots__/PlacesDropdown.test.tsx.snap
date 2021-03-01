@@ -2,32 +2,43 @@
 
 exports[`PlacesDropdown matches snapshot 1`] = `
 <div
-  class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-select-1"
+  class="MuiFormControl-root"
 >
+  <label
+    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+    data-shrink="true"
+    id="route-select-label"
+  >
+    Route
+  </label>
   <div
-    aria-haspopup="listbox"
-    class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-    role="button"
-    tabindex="0"
+    class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-select-1 MuiInputBase-formControl MuiInput-formControl"
   >
-    MSP Airport Terminal 1 - Lindbergh Station
-  </div>
-  <input
-    aria-hidden="true"
-    class="MuiSelect-nativeInput"
-    placeholder="Select stop"
-    tabindex="-1"
-    value="LIND"
-  />
-  <svg
-    aria-hidden="true"
-    class="MuiSvgIcon-root MuiSelect-icon"
-    focusable="false"
-    viewBox="0 0 24 24"
-  >
-    <path
-      d="M7 10l5 5 5-5z"
+    <div
+      aria-haspopup="listbox"
+      aria-labelledby="route-select-label"
+      class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+      role="button"
+      tabindex="0"
+    >
+      MSP Airport Terminal 1 - Lindbergh Station
+    </div>
+    <input
+      aria-hidden="true"
+      class="MuiSelect-nativeInput"
+      tabindex="-1"
+      value="LIND"
     />
-  </svg>
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSelect-icon"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M7 10l5 5 5-5z"
+      />
+    </svg>
+  </div>
 </div>
 `;
