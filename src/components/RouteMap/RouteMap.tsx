@@ -32,14 +32,15 @@ const RouteMap: React.FC<RouteMapProps> = ({ stop, departures }) => {
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   useEffect(() => {
     const getVehicles = async () => {
-      setVehicles([]);
       const uniqueRouteIds = uniqBy(departures, 'route_id').map((departure) => departure.route_id);
 
-      const retrievedVehicles: Vehicle[] = [];
-      for (const routeId of uniqueRouteIds) {
-        retrievedVehicles.concat(await NexTripApi.getVehiclesByRoute(routeId));
-      }
-      setVehicles(retrievedVehicles);
+      let retrievedVehicles = await Promise.all(
+        uniqueRouteIds.map(async (routeId) => {
+          return await NexTripApi.getVehiclesByRoute(routeId);
+        })
+      );
+
+      setVehicles(retrievedVehicles.flat());
     };
 
     getVehicles();
@@ -65,14 +66,13 @@ const RouteMap: React.FC<RouteMapProps> = ({ stop, departures }) => {
       height={300}
     >
       <Marker anchor={[stop.latitude, stop.longitude]} />
-      {vehicles.length > 0 &&
-        vehicles.map((vehicle) => {
-          return (
-            <Overlay key={vehicle.trip_id} anchor={[vehicle.latitude, vehicle.longitude]}>
-              <div className={busMarker}>{vehicle.route_id}</div>
-            </Overlay>
-          );
-        })}
+      {vehicles?.map((vehicle) => {
+        return (
+          <Overlay key={vehicle.trip_id} anchor={[vehicle.latitude, vehicle.longitude]}>
+            <div className={busMarker}>{vehicle.route_id}</div>
+          </Overlay>
+        );
+      })}
     </Map>
   );
 };
